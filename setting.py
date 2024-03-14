@@ -1,0 +1,3 @@
+WIDTH, HEIGHT = 800, 800
+
+FPS = 90
