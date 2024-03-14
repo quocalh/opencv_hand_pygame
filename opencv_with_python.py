@@ -28,7 +28,7 @@ class object(pygame.sprite.Sprite):
     def update(self):
         pass
         
-# PUSHING USING RECURSION (CAN PUSHING MULTIPLE OBJ BUT TOO BUGGY (HAVE BEEN REPLACED WITH THE OLD ONE), WILL BE FIX LATER)--------------------
+# PUSHING USING RECURSION (fix completed, go try in the object_pushign_recursion_test)--------------------
 
 def move__pushing__recursion__(movin_box,  vector, CheckingSprites = object, Firstime = True, maxobject = True): # IF FIRST TIME NEED BC NO NEED TO REMEARSURE THE NEXT OBJECT FOR SURE
     CheckingSprites = [box for box in object.spritegroup if box is not movin_box]
@@ -91,8 +91,7 @@ def move__pushing__recursion__(movin_box,  vector, CheckingSprites = object, Fir
                         # box.rect.move_ip((VectorExtract, 0))
                         VectorMultipler[0] = VectorExtract
             # else:
-            if not Firstime:
-                return None
+            
             box.rect.move_ip(VectorMultipler)
             
             move__pushing__recursion__(box, VectorMultipler, CheckingSprites, False)
@@ -237,9 +236,10 @@ class HandDetector:
 
 
 
-object1 = object(100, 100, 100, 50, 'blue')
-object1 = object(500, 100, 100, 50)
-object1 = object(500, 500, 100, 50, 'yellow')
+object1 = object(100, 100, 100, 100, 'blue')
+object1 = object(350, 100, 100, 100)
+object1 = object(500, 100, 100, 100)
+object1 = object(500, 500, 100, 100, 'yellow')
 object1 = object(300, 300, 100, 100, 'brown')
 
 

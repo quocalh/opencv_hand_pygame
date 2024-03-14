@@ -53,6 +53,7 @@ def sweep_and_prunes(): # detect if clicked
 object1 = object(100, 100, 50, 50)
 object1 = object(500, 100, 50, 50)
 object1 = object(500, 500, 50, 50)
+object1 = object(500, 300, 50, 50)
 # object.spritegroup.add(object1)
 
 object_held = False
@@ -63,10 +64,14 @@ def move__pushing__recursion__(movin_box,  vector, CheckingSprites = object, Fir
     CheckingSprites = [box for box in object.spritegroup if box is not movin_box]
     # BASED SEARCHING FOR BOXES , MAKE IT TRANSFER VECTOR FIRST THEN ADD IF ELSE STATEMENT WOULD BE FINE
     VectorMultipler = vector
-
+    if not CheckingSprites:
+        return
     for box in [box for box in CheckingSprites if movin_box.rect.top <= box.rect.top <= movin_box.rect.bottom or movin_box.rect.top <= box.rect.bottom <= movin_box.rect.bottom]:
         if pygame.sprite.spritecollideany(movin_box, CheckingSprites):
             box = pygame.sprite.spritecollideany(movin_box, CheckingSprites)
+
+            # if box == parent: return # no cycle => no exceed recursion ig:D
+
             # print(pygame.sprite.spritecollide(movin_box, CheckingSprites, False))
             if Firstime:
                 range_list = (
@@ -120,11 +125,11 @@ def move__pushing__recursion__(movin_box,  vector, CheckingSprites = object, Fir
                         # box.rect.move_ip((VectorExtract, 0))
                         VectorMultipler[0] = VectorExtract
             # else:
-            if not Firstime:
-                return None
+            
             box.rect.move_ip(VectorMultipler)
             
             move__pushing__recursion__(box, VectorMultipler, CheckingSprites, False)
+            print(CheckingSprites)
 
                 # print(VectorMultipler)
 
