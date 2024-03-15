@@ -30,7 +30,6 @@ class object(pygame.sprite.Sprite):
 
     def __init__(self, x, y, width, height):
         pygame.sprite.Sprite.__init__(self)
-        # self.image = pygame.Rect(x, y, width, height)
         self.image = pygame.Surface((width, height))
         self.image.fill('red')
         self.rect = self.image.get_rect(center = (x,y))
@@ -54,11 +53,9 @@ object1 = object(100, 100, 50, 50)
 object1 = object(500, 100, 50, 50)
 object1 = object(500, 500, 50, 50)
 object1 = object(500, 300, 50, 50)
-# object.spritegroup.add(object1)
 
 object_held = False
 
-# LastMousePosition = 
 
 def move__pushing__recursion__(movin_box,  vector, CheckingSprites = object, Firstime = True, maxobject = True): # IF FIRST TIME NEED BC NO NEED TO REMEARSURE THE NEXT OBJECT FOR SURE
     CheckingSprites = [box for box in object.spritegroup if box is not movin_box]
@@ -124,20 +121,11 @@ def move__pushing__recursion__(movin_box,  vector, CheckingSprites = object, Fir
                         VectorExtract = CenterDistance - RealCenterDistance    # CB
                         # box.rect.move_ip((VectorExtract, 0))
                         VectorMultipler[0] = VectorExtract
-            # else:
             
             box.rect.move_ip(VectorMultipler)
             
             move__pushing__recursion__(box, VectorMultipler, CheckingSprites, False)
             print(CheckingSprites)
-
-                # print(VectorMultipler)
-
-            
-        # if collide (chấn chỉnh sao cho hai tam cach nhau hop li)
-    # pass
-
-# if top2 < top1 < bottom 2 or top2 < bottom1 < bottom2 # SWEEP AND PRUNE
 
 MousePosition = pygame.mouse.get_pos()
 LastMousePostion = pygame.mouse.get_pos()
